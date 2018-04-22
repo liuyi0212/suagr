@@ -6,21 +6,11 @@ Vue.use(VueRouter)
 const asyncComponent = name => async resolve => resolve(await import (`./page/${name}.vue`));
 
 const router = new VueRouter({
-    // mode: 'history',
+    mode: 'history',
     routes: [
         {
-            name: 'user-center',
-            path: '/user-center',
-            component: asyncComponent('userCenter')
-        },
-        {
-            name: 'admire',
-            path: '/admire',
-            component: asyncComponent('admire')
-        },
-        {
             name: 'index',
-            path: '/index',
+            path: '/',
             component: asyncComponent('index')
         },
         {

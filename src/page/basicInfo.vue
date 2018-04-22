@@ -1,8 +1,5 @@
 <template>
     <div class="main">
-        <div>
-            <h6 class="title">基本信息</h6>
-        </div>
         <p class="default-font">补充基本信息，即可向医生发起提问</p>
         <div class="basic-wrap">
             <div class="input-wrap">
@@ -52,7 +49,7 @@
             SelectBox
         },
         mounted() {
-            console.log('hello world')
+            document.title = '基本信息';
         },
         methods: {
             handleConfirm(value){

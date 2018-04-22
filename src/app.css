@@ -152,8 +152,3 @@ input[type="color"]:focus,
     outline: 0;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
-/*取消安卓长按弹出菜单*/
-#app {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}

@@ -1,8 +1,5 @@
 <template>
     <div class="main">
-        <div>
-            <h6 class="title">糖友会</h6>
-        </div>
         <ul class="nav_list">
             <li class="nav_content" @click="jump(nav.path,id)" v-for="(nav,index) in navData" key="index">
                 <i :class="['icon', nav.icon]"></i>
@@ -50,7 +47,7 @@
             }
         },
         mounted() {
-            console.log('hello world')
+            document.title = '糖友会';
         },
         created() {
             this.getQuestionList();

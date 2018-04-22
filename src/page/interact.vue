@@ -1,8 +1,5 @@
 <template>
     <div class="main">
-        <div>
-            <h6 class="title">医患互动</h6>
-        </div>
         <div class="question-wrap">
             <h6 class="question-title">{{articleData.title}} <span class="question-num">阅读 {{articleData.read}}</span></h6>
             <section class="question-info">{{articleData.body}}</section>
@@ -35,7 +32,8 @@
 </template>
 
 <script>
-    import { request, urls } from '../request'
+    import wx from 'weixin-js-sdk';
+    import { request, urls } from '../request';
 
     export default {
         data() {
@@ -46,7 +44,13 @@
             }
         },
         mounted() {
-            console.log('hello world')
+            document.title = '医患互动';
+            // wx.config({
+            //
+            // })
+            // wx.ready(() => {
+            //     // wx.
+            // })
         },
         created() {
             this.getArticle();

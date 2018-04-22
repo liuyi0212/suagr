@@ -1,8 +1,5 @@
 <template>
     <div class="main">
-        <div>
-            <h6 class="title">发起提问</h6>
-        </div>
         <div class="btn-wrap">
             <button @click="ask" class="btn-save right">提交</button>
         </div>
@@ -45,9 +42,7 @@
             }
         },
         mounted() {
-
-        },
-        created() {
+            document.title = '发起提问'
         },
         methods: {
             async ask() {
