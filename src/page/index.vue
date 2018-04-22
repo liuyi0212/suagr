@@ -1,0 +1,152 @@
+<template>
+    <div class="main">
+        <div>
+            <h6 class="title">糖友会</h6>
+        </div>
+        <ul class="nav_list">
+            <li class="nav_content" @click="jump(nav.path,id)" v-for="(nav,index) in navData" key="index">
+                <i :class="['icon', nav.icon]"></i>
+                <span class="nav_name">{{nav.name}}</span>
+            </li>
+        </ul>
+        <div class="answer_list">
+            <dl class="answer_content" v-for="(list, index) in questionList" key = "index" @click="jump('/interact',list.id)">
+                <dt class="answer_title">{{list.title}}</dt>
+                <dd class="answer_info">
+                    {{list.body}}
+                </dd>
+                <dd class="answer_data">
+                    <i class="icon icon_read"></i>
+                    <span class="answer_number">{{list.like}}</span>
+                    <i class="icon icon_best"></i>
+                    <span class="answer_number">{{list.read}}</span>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</template>
+
+<script>
+    import { request, urls } from '../request'
+
+    export default {
+        data() {
+            return {
+                questionList: [],
+                userCoin: {},
+                coinRecord: [],
+                navData:[
+                    {
+                        name:'医患互动',
+                        path:'interact',
+                        icon: 'icon_message',
+                    },
+                    {
+                        name:'糖尿病指导',
+                        path:'answer',
+                        icon: 'icon_guide',
+                    }
+                ]
+            }
+        },
+        mounted() {
+            console.log('hello world')
+        },
+        created() {
+            this.getQuestionList();
+        },
+        methods: {
+            async getQuestionList() {
+                const params = {
+                    page: 0
+                };
+                const {
+                    data
+                } = await request.get(urls.getQuestionList, {
+                    params
+                })
+                if (data.code === 0) {
+                    this.questionList = data.data;
+                }
+            },
+            jump(path, id) {
+                this.$router.push({
+                    path,
+                    query: {
+                        id
+                    }
+                });
+            }
+        }
+    }
+</script>
+
+<style lang="less" scoped>
+    .main {
+        width: 100%;
+    }
+    .nav_list{
+        display:flex;
+        padding:16px 0 16px 15px;
+        .nav_content{
+            cursor: pointer;
+            flex:1;
+            margin-right: 15px;
+            background: #fff;
+            height: 70px;
+            box-sizing: border-box;
+            border: 0;
+            border-radius: 4px;
+            padding: 11px 0 11px 12px;
+            .icon{
+                width: 48px;
+                height: 48px;
+                border: 0;
+                border-radius: 24px;
+                background: #fc0;
+                display: inline-block;
+                float: left;
+                margin-right: 12px;
+            }
+            .icon_guide{
+                background-color: #ffa934;
+            }
+            .icon_message{
+                background-color: #34cbff;
+            }
+            .nav_name{
+                float: left;
+                line-height: 48px;
+                color: #4a4a4a;
+            }
+        }
+    }
+    .answer_list{
+        overflow: hidden;
+        .answer_content{
+            background: #fff;
+            padding: 15px;
+            border-bottom:0.5px solid #c9c9c0;
+            border-bottom:thin solid #c9c9c0;
+            .answer_title{
+                color: #4a4a4a;
+                font-weight: bold;
+            }
+            .answer_info{
+                color: #9b9b9b;
+                font-size: 14px;
+                line-height: 18px;
+                padding: 10px 0;
+            }
+            .answer_data{
+                text-align: right;
+                color: #9b9b9b;
+                font-size: 12px;
+                .icon{
+                    margin:0 16px 0 4px;
+                }
+            }
+        }
+
+    }
+</style>
