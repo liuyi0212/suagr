@@ -4,7 +4,7 @@ module.exports = options => ({
   html: {
     template: './src/index.html'
   },
-  port:3000,
+  port:5001,
   devServer:{
     proxy:'http://192.168.10.33:3000/'
   }
