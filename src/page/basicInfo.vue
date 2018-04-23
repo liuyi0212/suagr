@@ -4,7 +4,7 @@
         <div class="basic-wrap">
             <div class="input-wrap">
                 <p class="input-label">姓名</p>
-                <input type="" class="from-control" v-model="realname" placeholder="填写姓名"/>
+                <input type="text" class="from-control" v-model="realname" placeholder="填写姓名"/>
             </div>
             <div class="input-wrap">
                 <p class="input-label">性别</p>
@@ -12,18 +12,10 @@
             </div>
             <div class="input-wrap">
                 <p class="input-label">年龄</p>
-                <input type="" class="from-control" @click="openPicker" v-model="age" placeholder="请选择"/>
+                <input type="number" class="from-control"  v-model="age" placeholder="请输入"/>
             </div>
             <button class="btn-save" @click="saveMemberInfo">保存</button>
         </div>
-        <mt-datetime-picker
-                ref="picker"
-                type="date"
-                v-model="defaultDate"
-                :endDate="endDate.toDate()"
-                :startDate="startDate"
-                @confirm="handleConfirm">
-        </mt-datetime-picker>
         <select-box :show="popupVisible" @selectSex="selectSex" @hide="popupVisible = false"></select-box>
     </div>
 </template>
@@ -64,13 +56,8 @@
             selectSex(value){
               this.gender = value;
             },
-            openPicker() {
-                this.$refs.picker.open();
-            },
             selectGender() {
-                console.log(this.popupVisible);
                 this.popupVisible = true;
-                console.log(this.popupVisible);
             },
             async saveMemberInfo() {
                 const params = {
