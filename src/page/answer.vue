@@ -51,16 +51,14 @@
                 if (!this.askinfo) {
                     Toast('提问内容不能为空');
                 }
-                const { data } = await request.post(urls.ask, {
+                const { data } = await request.post(urls.ask,{
                     body: this.askinfo,
                     picture: this.imgList.join(','),
-                    title: this.title,
-                    anonymous: this.anonymous ? '0' : '1'
-                }, {headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }})
+                    title: this.title
+                })
                 if (data.code === 0) {
-                    window.history.go(-1);
+                    console.log(data);
+                    // window.history.go(-1);
                 }
             },
             async onPhotoChange(event) {
