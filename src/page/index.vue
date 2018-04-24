@@ -13,10 +13,10 @@
                     {{list.body}}
                 </dd>
                 <dd class="answer_data">
-                    <i class="icon icon_read"></i>
-                    <span class="answer_number">{{list.like}}</span>
+                    <span class="answer_number">{{list.click}}</span>
                     <i class="icon icon_best"></i>
-                    <span class="answer_number">{{list.read}}</span>
+                    <span class="answer_number">{{list.like}}</span>
+                    <i class="icon icon_read"></i>
                 </dd>
             </dl>
         </div>
@@ -142,8 +142,24 @@
                 text-align: right;
                 color: #9b9b9b;
                 font-size: 12px;
+                overflow:hidden;
+                .answer_number,
                 .icon{
-                    margin:0 16px 0 4px;
+                    float: right;
+                }
+                .icon{
+                    margin:0 4px 0 16px;
+                    display: inline-block;
+                    width: 12px;
+                    height: 12px;
+                }
+                .icon_best{
+                    background: url("../img/icon_praise.png") no-repeat  center;
+                    background-size: 12px auto;
+                }
+                .icon_read{
+                    background: url("../img/icon_read.png") no-repeat  center;
+                    background-size: 12px auto;
                 }
             }
         }
