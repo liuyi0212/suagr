@@ -35,12 +35,12 @@
                 navData:[
                     {
                         name:'医患互动',
-                        path:'interact',
+                        path:'answer',
                         icon: 'icon_message',
                     },
                     {
                         name:'糖尿病指导',
-                        path:'answer',
+                        path:'interact',
                         icon: 'icon_guide',
                     }
                 ]
