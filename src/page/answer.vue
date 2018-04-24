@@ -13,7 +13,7 @@
         <div class="add-photo">
             <ul>
                 <li v-for="(img,index) in imgList" key="index">
-                    <img src="img" alt="">
+                    <img :src="img" alt="">
                 </li>
                 <li><input class="edit-photo" @change="onPhotoChange" type="file"/></li>
             </ul>
@@ -38,7 +38,8 @@
             return {
                 askinfo: '',
                 anonymous: false,
-                imgList: []
+                imgList: [],
+                title: '',
             }
         },
         mounted() {
@@ -49,8 +50,11 @@
                 const { data } = await request.post(urls.ask, {
                     body: this.askinfo,
                     picture: this.imgList.join(','),
-                    title: this.title
-                })
+                    title: this.title,
+                    anonymous: this.anonymous ? '0' : '1'
+                }, {headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }})
                 if (data.code === 0) {
                     window.history.go(-1);
                 }
@@ -113,6 +117,11 @@
         display: inline-block;
         float: left;
         margin-right: 8px;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+
     }
 
     }
