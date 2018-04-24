@@ -6,9 +6,10 @@
         <div class="answerinfo-wrap">
           <textarea v-model="askinfo"
                     class="answerinfo"
+                    maxlength="50"
                     placeholder="请在此留下您的问题，医生会为您解答">
           </textarea>
-            <p class="info-number">0/{{askinfo.length}}</p>
+            <p class="info-number">{{askinfo.length}}/50</p>
         </div>
         <div class="add-photo">
             <ul>
