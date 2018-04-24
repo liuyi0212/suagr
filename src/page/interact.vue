@@ -1,11 +1,11 @@
 <template>
     <div class="main">
         <div class="question-wrap">
-            <h6 class="question-title">{{articleData.title}} <span class="question-num">阅读 {{articleData.read}}</span></h6>
+            <h6 class="question-title">{{articleData.title}} <span class="question-num">阅读 {{articleData.click}}</span></h6>
             <section class="question-info">{{articleData.body}}</section>
             <ul class="question-img-list">
                 <li  v-for="(photo,index) in articleData.pictureset">
-                    <img :src="photo" alt="">
+                    <img :src="photo" alt="" @click="blowup(photo)">
                 </li>
             </ul>
         </div>
@@ -26,6 +26,10 @@
                 </li>
             </ul>
         </div>
+        <mt-popup
+                v-model="popupVisible">
+            <img :src="blowupImg" alt="">
+        </mt-popup>
     </div>
 </template>
 
@@ -38,7 +42,9 @@
             return {
                 articleData: {},
                 isPraise: false,
-                id: this.$route.query.id
+                id: this.$route.query.id,
+                popupVisible: false,
+                blowupImg: ''
             }
         },
         mounted() {
@@ -54,6 +60,10 @@
             this.getArticle();
         },
         methods: {
+            blowup(imgUrl){
+                this.blowupImg = imgUrl;
+                this.popupVisible = true;
+            },
             async getArticle() {
                 const params = {
                     id: this.id
@@ -90,7 +100,14 @@
         }
     }
 </script>
-
+<style lang="less">
+    .mint-popup{
+        width: 90%;
+        img{
+            width: 100%;
+        }
+    }
+</style>
 <style lang="less" scoped>
     .question-wrap {
         background: #fff;

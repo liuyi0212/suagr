@@ -12,10 +12,10 @@
         </div>
         <div class="add-photo">
             <ul>
-                <li v-for="(img,index) in imgList" key="index">
+                <li v-for="img in imgList">
                     <img :src="img" alt="">
                 </li>
-                <li><input class="edit-photo" @change="onPhotoChange" type="file"/></li>
+                <li class="addimg-bg"><input class="edit-photo" @change="onPhotoChange" type="file"/></li>
             </ul>
         </div>
         <div class="hide-name-wrap">
@@ -32,7 +32,7 @@
 
 <script>
     import { request, urls } from '../request'
-
+    import { Toast } from 'mint-ui';
     export default {
         data() {
             return {
@@ -47,6 +47,9 @@
         },
         methods: {
             async ask() {
+                if (!this.askinfo) {
+                    Toast('提问内容不能为空');
+                }
                 const { data } = await request.post(urls.ask, {
                     body: this.askinfo,
                     picture: this.imgList.join(','),
@@ -60,6 +63,10 @@
                 }
             },
             async onPhotoChange(event) {
+                console.log(this.imgList.length);
+                if (this.imgList.length > 8) {
+                    Toast('最多只能上传九张图');
+                }
                 const formData = new FormData();
                 formData.append('file', event.target.files[0])
                 const { data } = await request.post(urls.addimg, formData)
@@ -103,28 +110,29 @@
         border-bottom: 0.5px solid #e5e5e5;
         border-bottom: thin solid #e5e5e5;
         overflow: hidden;
-        margin-bottom: 8.5px;
+        margin-bottom: 8px;
+        ul {
+            padding: 0 0 15px 15px;
+            overflow: hidden;
+            li {
+                width: 80px;
+                height: 80px;
+                border: solid 0.5px #ccc;
+                border: solid thin #ccc;
+                display: inline-block;
+                float: left;
+                margin-right: 8px;
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
 
-    ul {
-        padding: 0 0 15px 15px;
-        overflow: hidden;
-
-    li {
-        width: 80px;
-        height: 80px;
-        border: solid 0.5px #ccc;
-        border: solid thin #ccc;
-        display: inline-block;
-        float: left;
-        margin-right: 8px;
-        img{
-            width: 100%;
-            height: 100%;
+            }
+            .addimg-bg{
+                background: url("../img/icon_add.png") no-repeat center;
+                background-size: 36px;
+            }
         }
-
-    }
-
-    }
     }
     .edit-photo {
         background: #f5f5f5;
