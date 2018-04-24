@@ -2,7 +2,7 @@ import axios from 'axios';
 import queryString from 'query-string'
 
 export const request = axios.create({
-    baseURL: 'http://192.168.0.183:7766',
+    baseURL: 'http://192.168.0.130:7766',
     timeout: 30000,
     transformRequest: [data => {
         if (data instanceof FormData) {
