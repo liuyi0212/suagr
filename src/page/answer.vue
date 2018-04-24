@@ -54,10 +54,9 @@
                 const { data } = await request.post(urls.ask, {
                     body: this.askinfo,
                     picture: this.imgList.join(','),
-                    title: this.title,
-                    anonymous: this.anonymous ? '0' : '1'
+                    title: this.title
                 }, {headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
+                    'Content-Type': 'application/json'
                 }})
                 if (data.code === 0) {
                     window.history.go(-1);
