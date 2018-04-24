@@ -19,7 +19,7 @@
         <div>
             <ul class="user-edit">
                 <li :class="['edit-icon','praise', { bg_gray: isPraise }]" @click="praise()">
-                    点赞
+                    {{isPraise ? '已赞':'点赞'}}
                 </li>
                 <li :class="['edit-icon', 'share']" @click="share()">
                     分享
