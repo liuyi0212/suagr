@@ -52,7 +52,7 @@
                     title: this.title
                 })
                 if (data.code === 0) {
-                    this.info = data;
+                    window.history.go(-1);
                 }
             },
             async onPhotoChange(event) {
@@ -60,7 +60,7 @@
                 formData.append('file', event.target.files[0])
                 const { data } = await request.post(urls.addimg, formData)
                 if (data.code === 0) {
-                    this.imgList.push(data.imgUrl);
+                    this.imgList.push(data.data.imgUrl);
                 }
             }
         }
