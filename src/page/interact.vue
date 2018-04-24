@@ -18,12 +18,10 @@
         </dl>
         <div>
             <ul class="user-edit">
-                <li :class="['edit-icon',{ bg_gray: isPraise }]" @click="praise()">
-                    <i class="icon icon-praise"></i>
+                <li :class="['edit-icon','praise', { bg_gray: isPraise }]" @click="praise()">
                     点赞
                 </li>
-                <li class="edit-icon" @click="share()">
-                    <i class="icon icon-share"></i>
+                <li :class="['edit-icon', 'share']" @click="share()">
                     分享
                 </li>
             </ul>
@@ -135,6 +133,7 @@
             margin: 8px 8px 8px 0;
             img{
                 width:100%;
+                height: 100%;
             }
         }
 
@@ -174,6 +173,11 @@
     .user-edit {
         text-align: center;
         width: 100%;
+        .icon{
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+        }
         .edit-icon {
             display: inline-block;
             width: 56px;
@@ -185,15 +189,19 @@
             margin: 18px;
             font-size: 12px;
             background-color: #f9b93a;
+            padding-top: 32px;
+            box-sizing: border-box;
         }
-        .praise-icon{
-            background-color: #f9b93a;
+        .praise{
+            background: url('../img/praise_icon.png') no-repeat top 10px center #f9b93a;
+            background-size: 20px;
         }
-        .share-icon{
-            background-color: #34cbff;
+        .share{
+            background: url('../img/share_icon.png') no-repeat top 10px center #34cbff;
+            background-size: 20px;
         }
         .bg_gray {
-            background: #d1d1d1;
+            background-color: #d1d1d1;
         }
     }
 </style>

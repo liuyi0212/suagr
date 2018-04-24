@@ -106,15 +106,18 @@
                 margin-right: 12px;
             }
             .icon_guide{
-                background-color: #ffa934;
+                background: url('../img/message_icon.png') no-repeat center #ffa934;
+                background-size: 27px;
             }
             .icon_message{
-                background-color: #34cbff;
+                background: url('../img/answer_icon.png') no-repeat center #34cbff;
+                background-size: 27px;
             }
             .nav_name{
                 float: left;
                 line-height: 48px;
                 color: #4a4a4a;
+
             }
         }
     }
