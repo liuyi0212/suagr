@@ -44,7 +44,8 @@
                 isPraise: false,
                 id: this.$route.query.id,
                 popupVisible: false,
-                blowupImg: ''
+                blowupImg: '',
+                shareTips: require('../img/sharetips.png')
             }
         },
         mounted() {
@@ -95,7 +96,8 @@
                 }
             },
             async share() {
-                alert(' /*调取微信分享接口*/')
+                this.blowupImg = this.shareTips;
+                this.popupVisible = true;
             }
         }
     }
@@ -103,6 +105,7 @@
 <style lang="less">
     .mint-popup{
         width: 90%;
+        background: none;
         img{
             width: 100%;
         }
