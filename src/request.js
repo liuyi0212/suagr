@@ -14,5 +14,6 @@ export const urls = {
     getFodder: '/get/permanent/footage/',
     getQuestionList: '/search/article/',
     MemberInfo: '/insert/member/info/',
-    wxinit: '/wechat/jsapi/'
+    wxinit: '/wechat/jsapi/',
+    guide:'/wechat/batchget/material/'
 }

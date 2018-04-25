@@ -1,10 +1,10 @@
 <template>
     <div class="main">
-        <dl  class="guide">
+        <dl class="guide" v-for="list in questionList" @click="jump(list.url)">
             <dt>
-                <img src="" alt="提问图片">
+                <img :src="list.thumb_url" alt="提问图片">
             </dt>
-            <dd>标题</dd>
+            <dd>{{list.title}}</dd>
         </dl>
     </div>
 </template>
@@ -15,21 +15,7 @@
     export default {
         data() {
             return {
-                questionList: [],
-                userCoin: {},
-                coinRecord: [],
-                navData:[
-                    {
-                        name:'医患互动',
-                        path:'answer',
-                        icon: 'icon_message',
-                    },
-                    {
-                        name:'糖尿病指导',
-                        path:'guide',
-                        icon: 'icon_guide',
-                    }
-                ]
+                questionList: []
             }
         },
         mounted() {
@@ -40,25 +26,15 @@
         },
         methods: {
             async getQuestionList() {
-                const params = {
-                    page: 0
-                };
                 const {
                     data
-                } = await request.get(urls.getQuestionList, {
-                    params
-                })
+                } = await request.post(urls.guide)
                 if (data.code === 0) {
                     this.questionList = data.data;
                 }
             },
-            jump(path, id) {
-                this.$router.push({
-                    path,
-                    query: {
-                        id
-                    }
-                });
+            jump(path) {
+                window.location.href = path;
             }
         }
     }
@@ -78,6 +54,7 @@
         overflow: hidden;
         padding: 12px 10px;
         box-sizing: border-box;
+        margin-bottom: 15px;
         dt{
             margin-bottom: 10px;
             img{
