@@ -40,7 +40,7 @@
                     },
                     {
                         name:'糖尿病指导',
-                        path:'interact',
+                        path:'guide',
                         icon: 'icon_guide',
                     }
                 ]

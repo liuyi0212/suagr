@@ -24,6 +24,11 @@ const router = new VueRouter({
             component: asyncComponent('answer')
         },
         {
+            name: 'guide',
+            path: '/guide',
+            component: asyncComponent('guide')
+        },
+        {
             name: 'interact',
             path: '/interact',
             component: asyncComponent('interact')

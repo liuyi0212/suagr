@@ -57,8 +57,7 @@
                     title: this.title
                 })
                 if (data.code === 0) {
-                    console.log(data);
-                    // window.history.go(-1);
+                    this.$router.push({path:'/'});
                 }
             },
             async onPhotoChange(event) {

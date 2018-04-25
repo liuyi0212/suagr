@@ -21,7 +21,7 @@
                 <li :class="['edit-icon','praise', { bg_gray: isPraise }]" @click="praise()">
                     {{isPraise ? '已赞':'点赞'}}
                 </li>
-                <li :class="['edit-icon', 'share']" @click="share()">
+                <li :class="['edit-icon', 'share']" @click="blowup(shareTips)">
                     分享
                 </li>
             </ul>
@@ -44,7 +44,8 @@
                 isPraise: false,
                 id: this.$route.query.id,
                 popupVisible: false,
-                blowupImg: ''
+                blowupImg: '',
+                shareTips: require('../img/sharetips.png')
             }
         },
         mounted() {
@@ -93,9 +94,6 @@
                     this.isPraise = true;
                     console.log(this.isPraise);
                 }
-            },
-            async share() {
-                alert(' /*调取微信分享接口*/')
             }
         }
     }
@@ -103,6 +101,7 @@
 <style lang="less">
     .mint-popup{
         width: 90%;
+        background: none;
         img{
             width: 100%;
         }
