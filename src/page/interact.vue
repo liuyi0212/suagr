@@ -34,8 +34,10 @@
 </template>
 
 <script>
-    import wx from 'weixin-js-sdk';
+    import wxinit from '../wxinit';
+    import shareConfig from '../wxshare';
     import { request, urls } from '../request';
+
 
     export default {
         data() {
@@ -50,12 +52,15 @@
         },
         mounted() {
             document.title = '医患互动';
-            // wx.config({
-            //
-            // })
-            // wx.ready(() => {
-            //     // wx.
-            // })
+            setTimeout(() => {
+                window.addEventListener('popstate', () => {
+                    wxinit();
+                    const wx = window.wx;
+                    wx.ready(() => {
+                        wx.hideAllNonBaseMenuItem();
+                    });
+                });
+            }, 500);
         },
         created() {
             this.getArticle();
@@ -77,6 +82,11 @@
                 if (data.code === 0) {
                     this.articleData = data.data;
                 }
+                shareConfig.config({
+                    title: this.articleData.title,
+                    imgUrl: 'https://upyun.thedoc.cn/img/4079ec97-b990-4e6c-a417-31c0f129b46f.png',
+                    desc: this.articleData.body.substring(0,20)
+                });
             },
             async praise() {
                 if(this.isPraise){
@@ -119,6 +129,7 @@
         padding: 16px 15px;
         font-size: 16px;
         line-height: 24px;
+        min-height: 24px;
         color: #4a4a4a;
         font-weight: bold;
 
