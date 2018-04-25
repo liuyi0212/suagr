@@ -21,7 +21,7 @@
                 <li :class="['edit-icon','praise', { bg_gray: isPraise }]" @click="praise()">
                     {{isPraise ? '已赞':'点赞'}}
                 </li>
-                <li :class="['edit-icon', 'share']" @click="share()">
+                <li :class="['edit-icon', 'share']" @click="blowup(shareTips)">
                     分享
                 </li>
             </ul>
@@ -94,10 +94,6 @@
                     this.isPraise = true;
                     console.log(this.isPraise);
                 }
-            },
-            async share() {
-                this.blowupImg = this.shareTips;
-                this.popupVisible = true;
             }
         }
     }
