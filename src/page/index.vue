@@ -1,13 +1,13 @@
 <template>
     <div class="main">
         <ul class="nav_list">
-            <li class="nav_content" @click="jump(nav.path,id)" v-for="(nav,index) in navData" key="index">
+            <li class="nav_content" @click="jump(nav.path)" v-for="(nav,index) in navData" :key="index">
                 <i :class="['icon', nav.icon]"></i>
                 <span class="nav_name">{{nav.name}}</span>
             </li>
         </ul>
         <div class="answer_list">
-            <dl class="answer_content" v-for="(list, index) in questionList" key = "index" @click="jump('/interact',list.id)">
+            <dl class="answer_content" v-for="(list, index) in questionList" :key = "index" @click="jump('/interact',list.id)">
                 <dt class="answer_title">{{list.title}}</dt>
                 <dd class="answer_info">
                     {{list.body}}
