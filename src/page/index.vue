@@ -86,15 +86,15 @@
         display:flex;
         padding:16px 0 16px 15px;
         .nav_content{
+            font-size: 15px;
             cursor: pointer;
             flex:1;
             margin-right: 15px;
             background: #fff;
-            height: 70px;
             box-sizing: border-box;
             border: 0;
             border-radius: 4px;
-            padding: 11px 0 11px 12px;
+            padding: 10px 0 10px 10px;
             .icon{
                 width: 48px;
                 height: 48px;
@@ -121,6 +121,22 @@
             }
         }
     }
+    @media screen and (max-width: 320px) {
+        .nav_list{
+            display:flex;
+            padding:16px 0 16px 15px;
+            .nav_content{
+                .icon{
+                    width: 36px;
+                    height: 36px;
+                }
+                .nav_name{
+                    line-height: 36px;
+                }
+            }
+        }
+    }
+
     .answer_list{
         overflow: hidden;
         .answer_content{
