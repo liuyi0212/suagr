@@ -4,11 +4,12 @@
             <button @click="ask" class="btn-save right">提交</button>
         </div>
         <div class="answerinfo-wrap">
-          <textarea v-model="askinfo"
-                    class="answerinfo"
-                    maxlength="50"
-                    placeholder="请在此留下您的问题，医生会为您解答">
-          </textarea>
+            <input type="text" class="title"  placeholder="标题" v-model="title"/>
+            <textarea v-model="askinfo"
+                      class="answerinfo"
+                      maxlength="50"
+                      placeholder="请在此留下您的问题，医生会为您解答">
+            </textarea>
             <p class="info-number">{{askinfo.length}}/50</p>
         </div>
         <div class="add-photo">
@@ -34,6 +35,7 @@
 <script>
     import { request, urls } from '../request'
     import { Toast } from 'mint-ui';
+
     export default {
         data() {
             return {
@@ -51,14 +53,16 @@
                 if (!this.askinfo) {
                     Toast('提问内容不能为空');
                 }
-                const { data } = await request.post(urls.ask,{
+                if (!this.title) {
+                    Toast('标题不能为空');
+                }
+                const { data } = await request.post(urls.ask, {
                     body: this.askinfo,
                     picture: this.imgList.join(','),
                     title: this.title
                 })
                 if (data.code === 0) {
-                    console.log(data);
-                    // window.history.go(-1);
+                    this.$router.push({ path: '/' });
                 }
             },
             async onPhotoChange(event) {
@@ -82,24 +86,36 @@
         background: #fff;
         border-bottom: 0.5px solid #e5e5e5;
         border-bottom: thin solid #e5e5e5;
-        padding: 10px 15px 0;
+        .font{
+            font-size: 16px;
+            line-height: 1.5;
+            color: #4a4a4a;
+            box-sizing: border-box;
+            padding: 0 15px;
+        }
+        .title{
+            width: 100%;
+            border-bottom: 0.5px solid #e5e5e5;
+            border-bottom: thin solid #e5e5e5;
+            height: 48px;
+            line-height: 48px;
+            .font
+        }
+        .answerinfo {
+            .font;
+            box-sizing: border-box;
+            width: 100%;
+            height: 132px;
+            resize: none;
+            padding-top: 12px;
+        }
 
-    .answerinfo {
-        box-sizing: border-box;
-        width: 100%;
-        height: 132px;
-        font-size: 16px;
-        line-height: 1.5;
-        color: #4a4a4a;
-        resize: none;
-    }
-
-    .info-number {
-        text-align: right;
-        font-size: 12px;
-        color: #9b9b9b;
-        padding: 15px 15px;
-    }
+        .info-number {
+            text-align: right;
+            font-size: 12px;
+            color: #9b9b9b;
+            padding: 15px 15px;
+        }
 
     }
 
@@ -110,28 +126,32 @@
         border-bottom: thin solid #e5e5e5;
         overflow: hidden;
         margin-bottom: 8px;
-        ul {
-            padding: 0 0 15px 15px;
-            overflow: hidden;
-            li {
-                width: 80px;
-                height: 80px;
-                border: solid 0.5px #ccc;
-                border: solid thin #ccc;
-                display: inline-block;
-                float: left;
-                margin-right: 8px;
-                img{
-                    width: 100%;
-                    height: 100%;
-                }
 
-            }
-            .addimg-bg{
-                background: url("../img/icon_add.png") no-repeat center;
-                background-size: 36px;
-            }
-        }
+    ul {
+        padding: 0 0 15px 15px;
+        overflow: hidden;
+
+    li {
+        width: 80px;
+        height: 80px;
+        border: solid 0.5px #ccc;
+        border: solid thin #ccc;
+        display: inline-block;
+        float: left;
+        margin-right: 8px;
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+
+    }
+    .addimg-bg {
+        background: url("../img/icon_add.png") no-repeat center;
+        background-size: 36px;
+    }
+
+    }
     }
     .edit-photo {
         background: #f5f5f5;
