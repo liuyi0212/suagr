@@ -28,7 +28,7 @@
             async getQuestionList() {
                 const {
                     data
-                } = await request.post(urls.guide)
+                } = await request.get(urls.guide)
                 if (data.code === 0) {
                     this.questionList = data.data;
                 }
