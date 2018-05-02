@@ -4361,9 +4361,9 @@ poi-webpack-node-externals@^2.0.0:
   version "2.0.0"
   resolved "http://registry.npm.taobao.org/poi-webpack-node-externals/download/poi-webpack-node-externals-2.0.0.tgz#3e23ae0673705f5f44b23ecd194b85c724de91fa"
 
-poi@^9.6.10:
-  version "9.6.12"
-  resolved "http://registry.npm.taobao.org/poi/download/poi-9.6.12.tgz#a97bef16be6d20b042639d654029ed4468cf6f4e"
+poi@^9.6.13:
+  version "9.6.13"
+  resolved "http://registry.npm.taobao.org/poi/download/poi-9.6.13.tgz#7ef137f6a863a93d1c1ffc7f17f3a9f588aa847d"
   dependencies:
     "@types/webpack" "^3.8.2"
     "@types/webpack-chain" "^4.0.0"
