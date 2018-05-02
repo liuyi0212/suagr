@@ -67,12 +67,17 @@
                 }
             },
             jump(path, id) {
-                this.$router.push({
-                    path,
-                    query: {
-                        id
-                    }
-                });
+                if (path='answer') {
+                    request.get(urls.isImpower);
+                }else {
+                    this.$router.push({
+                        path,
+                        query: {
+                            id
+                        }
+                    });
+                }
+
             }
         }
     }

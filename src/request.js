@@ -7,6 +7,7 @@ export const request = axios.create({
 
 export const urls = {
     getArticle: '/get/article/',
+    isImpower:'/wechat/redirect/oauth2/?url=/answer',
     reply: '/reply/article/',
     ask: '/submit/article/',
     addimg: '/upload/img/',
