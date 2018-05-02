@@ -52,9 +52,11 @@
             async ask() {
                 if (!this.askinfo) {
                     Toast('提问内容不能为空');
+                    return false;
                 }
                 if (!this.title) {
                     Toast('标题不能为空');
+                    return false;
                 }
                 const { data } = await request.post(urls.ask, {
                     body: this.askinfo,
