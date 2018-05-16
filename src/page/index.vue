@@ -70,12 +70,17 @@
                 if (path='answer') {
                     request.get(urls.isImpower);
                 }else {
-                    this.$router.push({
-                        path,
-                        query: {
-                            id
-                        }
-                    });
+                    const params = {
+                         id
+                    }
+                    await request.get(urls.read, { params }).then(()=>{
+                        this.$router.push({
+                            path,
+                            query: {
+                                id
+                            }
+                        });
+                    })
                 }
 
             }
