@@ -1,6 +1,7 @@
 <template>
     <div class="main">
         <p class="default-font">补充基本信息，即可向医生发起提问</p>
+        {{ajaxdata}}
         <div class="basic-wrap">
             <div class="input-wrap">
                 <p class="input-label">姓名</p>
@@ -61,7 +62,8 @@ import { setTimeout } from 'timers';
                 } = await request.post(urls.MemberInfo,
                     params
                 )
-                if (data.data.code === 0) {
+                this.ajaxdata = data;
+                if (data.code) {
                     Toast({
                         message: '保存信息成功',
                         position: 'bottom',
