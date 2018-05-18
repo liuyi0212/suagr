@@ -76,7 +76,8 @@
             },
             jump(path, id) {
                 if (path === 'answer') {
-                    window.open(urls.isImpower);
+                    const host = location.host;
+                    window.open(host + urls.isImpower);
                 }
                 else {
                     this.read(id);
