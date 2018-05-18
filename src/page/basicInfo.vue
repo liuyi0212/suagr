@@ -52,26 +52,19 @@ import { setTimeout } from 'timers';
                 this.popupVisible = true;
             },
             async saveMemberInfo() {
-                const params = {
+                const { data } = await request.post(urls.MemberInfo, {
                     age: this.age,
                     gender: this.gender,
                     realname: this.realname
-                };
-                request.post(urls.MemberInfo,
-                    params
-                ).then( data => {
-                    this.ajaxdata = data;
-                    if (data.data.code) {
-                        Toast({
+                })
+                if (data.code === 0) {
+                     Toast({
                             message: '保存信息成功',
                             position: 'bottom',
                             duration: 5000
-                        });
-                        setTimeout(() => this.$router.push({ path:'/answer'}),1000)
-                    }
-                })
-        
-            
+                    });
+                    setTimeout(() => this.$router.push({ path: '/answer' }), 1000) 
+                }
             }
         }
     }
