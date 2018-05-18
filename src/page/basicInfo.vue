@@ -61,7 +61,7 @@ import { setTimeout } from 'timers';
                 } = await request.post(urls.MemberInfo,
                     params
                 )
-                if (data.code === 0) {
+                if (data.data.code === 0) {
                     Toast({
                         message: '保存信息成功',
                         position: 'bottom',
