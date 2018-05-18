@@ -31,10 +31,7 @@
                 popupVisible: false,
                 age: '',
                 gender: '',
-                realname: '',
-                endDate: moment(),
-                startDate: new Date('1950-01-01'),
-                defaultDate:'1980-01-01'
+                realname: ''
             }
         },
         components: {
@@ -44,15 +41,6 @@
             document.title = '基本信息';
         },
         methods: {
-            handleConfirm(value){
-                const time = moment(value).format('YYYY-MM-DD');
-                this.age = time;
-            },
-            onValuesChange(picker, values) {
-                if (values[0] > values[1]) {
-                    picker.setSlotValue(1, values[0]);
-                }
-            },
             selectSex(value){
               this.gender = value;
             },
@@ -69,10 +57,11 @@
                     data
                 } = await request.post(urls.MemberInfo,
                     params
-                )
-                if (data.code === 0) {
-                   this.router.push({ path:'/answer'})
-                }
+                ).then(data => {
+                    if (data.code === 0) {
+                        this.router.push({ path:'/answer'})
+                    }
+                })
             }
         }
     }

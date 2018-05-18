@@ -13,9 +13,9 @@
                     {{list.body}}
                 </dd>
                 <dd class="answer_data">
-                    <span class="answer_number">{{list.click}}</span>
-                    <i class="icon icon_best"></i>
                     <span class="answer_number">{{list.like}}</span>
+                    <i class="icon icon_best"></i>
+                    <span class="answer_number">{{list.click}}</span>
                     <i class="icon icon_read"></i>
                 </dd>
             </dl>
