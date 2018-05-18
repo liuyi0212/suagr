@@ -47,7 +47,6 @@ export default {
             if (values[0] > values[1]) {
                 picker.setSlotValue(1, values[0]);
             };
-            console.log(values[0].name);
             this.selected = values[0].name;
         },
         pitchOff() {
