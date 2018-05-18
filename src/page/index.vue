@@ -66,27 +66,23 @@
                     this.questionList = data.data;
                 }
             },
-            async read(id) {
-                const params = {
-                    id
-                };
-                await request.get(urls.read, { params }).then(()=>{
-                    params
-                })
-            },
             jump(path, id) {
                 if (path === 'answer') {
                     const host = location.host;
-                    window.open(host + urls.isImpower);
+                    window.open('http://daqiao.thedoc.cn:7766/wechat/redirect/oauth2/?url=/answer');
                 }
                 else {
-                    this.read(id);
-                    this.$router.push({
+                    const params = {
+                        id
+                    };
+                    request.get(urls.read, { params }).then(()=>{
+                        this.$router.push({
                         path,
                         query: {
                             id
                         }
                     });
+                    })
                 }
 
             }
