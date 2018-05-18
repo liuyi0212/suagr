@@ -57,20 +57,20 @@ import { setTimeout } from 'timers';
                     gender: this.gender,
                     realname: this.realname
                 };
-                const {
-                    data
-                } = await request.post(urls.MemberInfo,
+                request.post(urls.MemberInfo,
                     params
-                )
-                this.ajaxdata = data;
-                if (data.code) {
-                    Toast({
-                        message: '保存信息成功',
-                        position: 'bottom',
-                        duration: 5000
-                    });
-                    setTimeout(() => this.$router.push({ path:'/answer'}),1000)
-                }
+                ).then( data => {
+                    this.ajaxdata = data;
+                    if (data.code) {
+                        Toast({
+                            message: '保存信息成功',
+                            position: 'bottom',
+                            duration: 5000
+                        });
+                        setTimeout(() => this.$router.push({ path:'/answer'}),1000)
+                    }
+                })
+        
             
             }
         }
