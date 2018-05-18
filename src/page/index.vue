@@ -77,11 +77,11 @@
                     };
                     request.get(urls.read, { params }).then(()=>{
                         this.$router.push({
-                        path,
-                        query: {
-                            id
-                        }
-                    });
+                            path,
+                            query: {
+                                id
+                            }
+                        });
                     })
                 }
 
