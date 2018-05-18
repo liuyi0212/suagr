@@ -58,14 +58,12 @@
         },
         methods: {
             async loadMore() {
-                const params = {
-                    page: this.page
-                };
+                // const params = {
+                //     page: this.page
+                // };
                 const {
                     data
-                } = await request.get(urls.getQuestionList, {
-                    params
-                })
+                } = await request.get(urls.getQuestionList)
                 if (data.code === 0) {
                     this.questionList = data.data;
                 }
