@@ -24,7 +24,9 @@
 <script>
     import moment from 'moment';
     import { request, urls } from '../request'
+    import { Toast } from 'mint-ui';
     import SelectBox from '../component/SelectBox';
+import { setTimeout } from 'timers';
 
     export default {
         data() {
@@ -61,8 +63,13 @@
                     params
                 ).then(data => {
                     this.ajaxdata = data;
-                    if (data.code === 0) {
-                        this.router.push({ path:'/answer'})
+                    if (data.data.code === 0) {
+                        Toast({
+                            message: '保存信息成功',
+                            position: 'bottom',
+                            duration: 5000
+                        });
+                        setTimeout(() => this.router.push({ path:'/answer'}),500)
                     }
                 })
             }

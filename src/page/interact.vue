@@ -26,7 +26,7 @@
                 </li>
             </ul>
         </div>
-        <mt-popup
+        <mt-popup class="interact"
                 v-model="popupVisible">
             <img :src="blowupImg" alt="">
         </mt-popup>
@@ -109,11 +109,13 @@
     }
 </script>
 <style lang="less">
-    .mint-popup{
-        width: 90%;
-        background: none;
-        img{
-            width: 100%;
+    .interact{
+        &.mint-popup{
+            width: 90%;
+            background: none;
+            img{
+                width: 100%;
+            }
         }
     }
 </style>
