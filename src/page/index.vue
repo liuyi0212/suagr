@@ -76,7 +76,7 @@
             },
             jump(path, id) {
                 if (path === 'answer') {
-                    request.get(urls.isImpower);
+                    window.open(urls.isImpower);
                 }
                 else {
                     this.read(id);
