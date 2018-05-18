@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const request = axios.create({
-    baseURL: 'http://120.26.116.47:7766/',
+    baseURL: 'http://daqiao.thedoc.cn/',
     timeout: 30000
 })
 
