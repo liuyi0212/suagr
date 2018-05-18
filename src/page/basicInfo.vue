@@ -69,10 +69,11 @@
                     data
                 } = await request.post(urls.MemberInfo,
                     params
-                )
-                if (data.code === 0) {
-                   this.router.push({ path:'/answer'})
-                }
+                ).then(data => {
+                    if (data.code === 0) {
+                        this.router.push({ path:'/answer'})
+                    }
+                })
             }
         }
     }
