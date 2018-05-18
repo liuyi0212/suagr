@@ -1,7 +1,6 @@
 <template>
     <div class="main">
         <p class="default-font">补充基本信息，即可向医生发起提问</p>
-        {{ajaxdata}}
         <div class="basic-wrap">
             <div class="input-wrap">
                 <p class="input-label">姓名</p>
@@ -61,17 +60,16 @@ import { setTimeout } from 'timers';
                     data
                 } = await request.post(urls.MemberInfo,
                     params
-                ).then(data => {
-                    this.ajaxdata = data;
-                    if (data.data.code === 0) {
-                        Toast({
-                            message: '保存信息成功',
-                            position: 'bottom',
-                            duration: 5000
-                        });
-                        setTimeout(() => this.router.push({ path:'/answer'}),500)
-                    }
-                })
+                )
+                if (data.data.code === 0) {
+                    Toast({
+                        message: '保存信息成功',
+                        position: 'bottom',
+                        duration: 5000
+                    });
+                    setTimeout(() => this.$router.push({ path:'/answer'}),1000)
+                }
+            
             }
         }
     }
