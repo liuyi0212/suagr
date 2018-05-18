@@ -6,31 +6,25 @@
                 <span class="nav_name">{{nav.name}}</span>
             </li>
         </ul>
-        <div ref="wrapper" :style="{ height: wrapperHeight + 'px' }" class="answer_list">
-            <div v-infinite-scroll="loadMore"
-                 infinite-scroll-disabled="loading"
-                 infinite-scroll-distance="10"
-                 :autoFill="false" >
-                <dl class="answer_content" v-for="(list, index) in questionList" :key = "index" @click="jump('/interact',list.id)">
-                    <dt class="answer_title">{{list.title}}</dt>
-                    <dd class="answer_info">
-                        {{list.body}}
-                    </dd>
-                    <dd class="answer_data">
-                        <span class="answer_number">{{list.like}}</span>
-                        <i class="icon icon_best"></i>
-                        <span class="answer_number">{{list.click}}</span>
-                        <i class="icon icon_read"></i>
-                    </dd>
-                </dl>
-            </div>
+        <div class="answer_list">
+            <dl class="answer_content" v-for="(list, index) in questionList" :key = "index" @click="jump('/interact',list.id)">
+                <dt class="answer_title">{{list.title}}</dt>
+                <dd class="answer_info">
+                    {{list.body}}
+                </dd>
+                <dd class="answer_data">
+                    <span class="answer_number">{{list.like}}</span>
+                    <i class="icon icon_best"></i>
+                    <span class="answer_number">{{list.click}}</span>
+                    <i class="icon icon_read"></i>
+                </dd>
+            </dl>
         </div>
     </div>
 </template>
 
 <script>
     import { request, urls } from '../request'
-    import { InfiniteScroll } from 'mint-ui';
 
     export default {
         data() {
@@ -58,28 +52,20 @@
         },
         mounted() {
             document.title = '糖友会';
-            this.wrapperHeight = document.documentElement.clientHeight -
-            this.$refs.wrapper.getBoundingClientRect().top;
         },
         created() {
             this.loadMore();
         },
         methods: {
             async loadMore() {
-                if (this.hasNext) {
-                    this.loading = true;
-                    this.page++;
-                    const params = {
-                        page: this.page
-                    };
-                    const {
-                        data
-                    } = await request.get(urls.getQuestionList, {
-                        params
-                    })
-                    if (data.code === 0) {
-                        this.questionList = data.data;
-                    }
+                // const params = {
+                //     page: this.page
+                // };
+                const {
+                    data
+                } = await request.get(urls.getQuestionList)
+                if (data.code === 0) {
+                    this.questionList = data.data;
                 }
                 
             },
