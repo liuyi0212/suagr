@@ -61,7 +61,7 @@ import { setTimeout } from 'timers';
                     params
                 ).then( data => {
                     this.ajaxdata = data;
-                    if (data.code) {
+                    if (data.data.code) {
                         Toast({
                             message: '保存信息成功',
                             position: 'bottom',
