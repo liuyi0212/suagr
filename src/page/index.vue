@@ -66,10 +66,20 @@
                     this.questionList = data.data;
                 }
             },
+            async read(id) {
+                const params = {
+                    id
+                };
+                await request.get(urls.read, { params }).then(()=>{
+                    params
+                })
+            },
             jump(path, id) {
-                if (path='answer') {
+                if (path === 'answer') {
                     request.get(urls.isImpower);
-                }else {
+                }
+                else {
+                    this.read(id);
                     this.$router.push({
                         path,
                         query: {
