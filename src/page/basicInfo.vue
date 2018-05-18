@@ -1,6 +1,7 @@
 <template>
     <div class="main">
         <p class="default-font">补充基本信息，即可向医生发起提问</p>
+        {{ajaxdata}}
         <div class="basic-wrap">
             <div class="input-wrap">
                 <p class="input-label">姓名</p>
@@ -31,7 +32,8 @@
                 popupVisible: false,
                 age: '',
                 gender: '',
-                realname: ''
+                realname: '',
+                ajaxdata: {}
             }
         },
         components: {
@@ -58,6 +60,7 @@
                 } = await request.post(urls.MemberInfo,
                     params
                 ).then(data => {
+                    this.ajaxdata = data;
                     if (data.code === 0) {
                         this.router.push({ path:'/answer'})
                     }

@@ -1,5 +1,5 @@
 <template>
-    <div id="Time">
+    <div>
         <mt-popup v-model="show" position="bottom">
             <div class="toolbar">
                 <span class="left btn" @click="pitchOff">取消</span>
