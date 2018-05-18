@@ -26,7 +26,6 @@
     import { request, urls } from '../request'
     import { Toast } from 'mint-ui';
     import SelectBox from '../component/SelectBox';
-import { setTimeout } from 'timers';
 
     export default {
         data() {
