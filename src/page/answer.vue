@@ -20,7 +20,7 @@
                 <li class="addimg-bg"><input class="edit-photo" @change="onPhotoChange" type="file"/></li>
             </ul>
         </div>
-        <div class="hide-name-wrap">
+        <!-- <div class="hide-name-wrap">
             <div class="left tips">
                 <p class="font-important">匿名</p>
                 <p class="font-basic">匿名后，您的问题仅医生可见</p>
@@ -28,7 +28,7 @@
             <div class="right on-off">
                 <mt-switch v-model="anonymous"></mt-switch>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -61,8 +61,7 @@
                 const { data } = await request.post(urls.ask, {
                     body: this.askinfo,
                     picture: this.imgList.join(','),
-                    title: this.title,
-                    anonymous: this.anonymous ? 0 : 1  
+                    title: this.title
                 })
                 if (data.code === 0) {
                     this.$router.push({ path: '/' });
