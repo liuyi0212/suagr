@@ -61,7 +61,8 @@
                 const { data } = await request.post(urls.ask, {
                     body: this.askinfo,
                     picture: this.imgList.join(','),
-                    title: this.title
+                    title: this.title,
+                    anonymous: this.anonymous ? 0 : 1  
                 })
                 if (data.code === 0) {
                     this.$router.push({ path: '/' });
@@ -77,6 +78,8 @@
                 const { data } = await request.post(urls.addimg, formData)
                 if (data.code === 0) {
                     this.imgList.push(data.data.imgUrl);
+                }else{
+                     Toast(data.error);
                 }
             }
         }
