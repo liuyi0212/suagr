@@ -9,7 +9,7 @@
                 </li>
             </ul>
         </div>
-        <dl class="answer-wrap">
+        <dl class="answer-wrap" v-show="articleData.replycontent">
             <dt class="answer-title">
                 <img  class="answer-portrait" :src="articleData.answerportrait" alt="">
                 <i class="icon icon_photo"></i>
