@@ -124,14 +124,15 @@
         padding: 0 36px 0 16px;
         .input-label{
             float: left;
-            line-height: 44px;
+            line-height: 42px;
             font-size: 16px;
             color: #4a4a4a;
         }
         .from-control{
             float: right;
             text-align: right;
-            line-height: 44px;
+            padding: 12px 0;
+            height: 18px;
             font-size: 16px;
         }
     }
