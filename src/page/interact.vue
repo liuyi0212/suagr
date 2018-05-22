@@ -21,7 +21,7 @@
                 <li :class="['edit-icon','praise', { bg_gray: isPraise }]" @click="praise()">
                     {{isPraise ? '已赞':'点赞'}}
                 </li>
-                <li :class="['edit-icon', 'share']" @click="blowup(shareTips)">
+                <li :class="['edit-icon', 'share']" @click="clickShare()">
                     分享
                 </li>
             </ul>
@@ -29,6 +29,10 @@
         <mt-popup class="interact"
                 v-model="popupVisible">
             <img :src="blowupImg" alt="">
+        </mt-popup>
+        <mt-popup class="share"
+                v-model="isShare">
+            <img :src="shareImg" alt="">
         </mt-popup>
     </div>
 </template>
@@ -47,7 +51,8 @@
                 id: this.$route.query.id,
                 popupVisible: false,
                 blowupImg: '',
-                shareTips: require('../img/sharetips.png')
+                isShare: false,
+                shareImg: require('../img/sharetips.png')
             }
         },
         mounted() {
@@ -66,9 +71,12 @@
             this.getArticle();
         },
         methods: {
-            blowup(imgUrl){
+            blowup(imgUrl, share){
                 this.blowupImg = imgUrl;
                 this.popupVisible = true;
+            },
+            clickShare() {
+                this.isShare = true;
             },
             async getArticle() {
                 const params = {
@@ -113,6 +121,16 @@
         &.mint-popup{
             width: 90%;
             background: none;
+            img{
+                width: 100%;
+            }
+        }
+    }
+    .share{
+        &.mint-popup{
+            width: 90%;
+            background: none;
+            top:30%;
             img{
                 width: 100%;
             }
