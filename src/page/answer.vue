@@ -142,7 +142,7 @@
         border: solid thin #ccc;
         display: inline-block;
         float: left;
-        margin-right: 8px;
+        margin:0 8px 8px 0;
 
     img {
         width: 100%;

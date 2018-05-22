@@ -71,8 +71,10 @@
             },
             jump(path, id) {
                 if (path === 'answer') {
-                    const host = location.host;
                     window.open('http://daqiao.thedoc.cn:7766/wechat/redirect/oauth2/?url=/answer');
+                }
+                if (path === 'guide') {
+                     this.$router.push({ path });
                 }
                 else {
                     const params = {
