@@ -7,7 +7,7 @@
                 <input type="text" class="from-control" v-model="realname" placeholder="填写姓名"/>
             </div>
             <div class="input-wrap">
-                <p class="input-label">性别</p>
+                <p class="input-label">性别sssss</p>
                 <input type="" @click="selectGender" class="from-control" v-model="gender" placeholder="请选择"/>
             </div>
             <div class="input-wrap">
