@@ -53,7 +53,7 @@
                 colorchage:'#9b9b9b',
                 colorchagetwo:'#9b9b9b',
                 ajaxdata: {},
-                choiceitem:0,
+                choiceitem:1,
                 gaoitem:0
             }
         },
