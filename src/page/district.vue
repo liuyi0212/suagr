@@ -6,9 +6,6 @@
 </div>
 </template>
 <script>
-import { InfiniteScroll } from 'mint-ui';
-import Vue from 'Vue'
-Vue.use(InfiniteScroll);
 export default{
    data(){
        return {
