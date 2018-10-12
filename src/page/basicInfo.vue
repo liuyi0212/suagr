@@ -12,7 +12,7 @@
             </div>
             <div class="input-wrap">
                 <p class="input-label">年龄</p>
-                <input type="number" class="from-control"  v-model="age" placeholder="请输入" onfocus='this.blur()'/>
+                <input type="number" class="from-control input-none"  v-model="age" placeholder="请输入"/>
             </div>
             <button class="btn-save" @click="saveMemberInfo">保存</button>
         </div>
@@ -329,6 +329,9 @@
             padding: 12px 0;
             height: 18px;
             font-size: 16px;
+        }
+        .input-none{
+            pointer-events: none;
         }
     }
 </style>
