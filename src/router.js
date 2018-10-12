@@ -32,6 +32,11 @@ const router = new VueRouter({
             name: 'interact',
             path: '/interact',
             component: asyncComponent('interact')
+        },
+        {
+            name: 'district',
+            path: '/district',
+            component: asyncComponent('district')  
         }
     ]
 })
