@@ -8,7 +8,7 @@
             </div>
             <div class="input-wrap">
                 <p class="input-label">性别</p>
-                <button @click="selectGender" class="from-control" :style="{'color': colorchagetwo}">{{gender}}</button>
+                <button @click="selectGender" class="from-control" :style="{'color': colorchagetwo,height:'100%'}">{{gender}}</button>
             </div>
             <div class="input-wrap">
                 <p class="input-label">年龄</p>
