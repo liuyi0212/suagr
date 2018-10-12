@@ -7,12 +7,12 @@
                 <input type="text" class="from-control" v-model="realname" placeholder="填写姓名"/>
             </div>
             <div class="input-wrap">
-                <p class="input-label">性别sssss</p>
+                <p class="input-label">性别</p>
                 <input type="" @click="selectGender" class="from-control" v-model="gender" placeholder="请选择"/>
             </div>
             <div class="input-wrap">
                 <p class="input-label">年龄</p>
-                <input type="number" class="from-control"  v-model="age" placeholder="请输入"/>
+                <input type="number" class="from-control"  v-model="age" placeholder="请输入" onfocus='this.blur()'/>
             </div>
             <button class="btn-save" @click="saveMemberInfo">保存</button>
         </div>
