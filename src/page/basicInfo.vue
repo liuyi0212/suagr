@@ -8,7 +8,7 @@
             </div>
             <div class="input-wrap">
                 <p class="input-label">性别</p>
-                <input type="" @click="selectGender" class="from-control input-none" v-model="gender" placeholder="请选择"/>
+                <button @click="selectGender" class="from-control" :style="{'color': colorchagetwo}">{{gender}}</button>
             </div>
             <div class="input-wrap">
                 <p class="input-label">年龄</p>
@@ -47,10 +47,11 @@
             return {
                 popupVisible: false,
                 age: '',
-                gender: '',
+                gender: '请选择',
                 realname: '',
                 country:'请选择',
                 colorchage:'#9b9b9b',
+                colorchagetwo:'#9b9b9b',
                 ajaxdata: {},
                 choiceitem:0,
                 gaoitem:0
@@ -63,7 +64,6 @@
         mounted() {
             document.title = '基本信息';
             if(this.$route.query.val){
-                console.log(this.$route.query,'触发')
                 this.country=this.$route.query.val
                 this.colorchage='#4a4a4a'
             }else{
@@ -74,6 +74,7 @@
         methods: {
             selectSex(value){
               this.gender = value;
+              this.colorchagetwo='#4a4a4a'
             },
             selectGender() {
                 this.popupVisible = true;
