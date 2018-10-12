@@ -8,7 +8,7 @@
             </div>
             <div class="input-wrap">
                 <p class="input-label">性别</p>
-                <input type="" @click="selectGender" class="from-control input-none" v-model="gender" placeholder="请选择" onfocus="this.blur()"/>
+                <input type="" @click="selectGender" class="from-control input-none" v-model="gender" placeholder="请选择"/>
             </div>
             <div class="input-wrap">
                 <p class="input-label">年龄</p>
