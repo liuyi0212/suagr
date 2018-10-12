@@ -11,8 +11,8 @@
                 <input type="" @click="selectGender" class="from-control" v-model="gender" placeholder="请选择"/>
             </div>
             <div class="input-wrap">
-                <p class="input-label">年龄</p>
-                <input type="number" class="from-control input-none"  v-model="age" placeholder="请输入"/>
+                <p class="input-label">年龄sss</p>
+                <input type="number" class="from-control input-none"  v-model="age" placeholder="请输入" @onfocus="this.blur()"/>
             </div>
             <button class="btn-save" @click="saveMemberInfo">保存</button>
         </div>
