@@ -25,7 +25,7 @@
               <div class="input-wrap" style="display:flex">
                 <p class="input-label" style="flex:1;">所属区委</p>
                 <div class="from-control" style='display: flex;
-    align-items:center;' @click='choicedistrict'>
+    align-items:center;width:60%;justify-content:flex-end' @click='choicedistrict'>
                      <p :style="{'color': colorchage}">{{country}}</p>
                     <p style="height:100%;color:#9b9b9b;margin-left:7px">></p>
                 </div>
@@ -165,18 +165,20 @@
         height: 44px;
         margin-bottom: 16px;
         padding: 0 36px 0 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         .input-label{
-            float: left;
             line-height: 42px;
             font-size: 16px;
             color: #4a4a4a;
         }
         .from-control{
-            float: right;
             text-align: right;
             padding: 12px 0;
             height: 18px;
             font-size: 16px;
+            width:80%;
         }
         .input-none{
             pointer-events: none;
