@@ -1,10 +1,16 @@
 <template>
     <div class="main">
         <div class="question-wrap">
-            <h6 class="question-title">{{articleData.title}} <span class="question-num">阅读 {{articleData.click}}</span></h6>
+            <div class="question-title"> 
+                <div class="tags-choice">
+                    <span class="tags-choice-item" v-for="(val, index) in articleData.tags" :key = "index">{{val}}</span>
+                </div>
+                <span class="question-num">阅读 {{articleData.click}}</span>
+            </div>
             <section class="question-info">{{articleData.body}}</section>
             <ul class="question-img-list">
-                <li  v-for="(photo,index) in articleData.pictureset">
+                <li  v-for="(photo,index) in articleData.pictureset" :key="
+                index">
                     <img :src="photo" alt="" @click="blowup(photo)">
                 </li>
             </ul>
@@ -152,14 +158,40 @@
         min-height: 24px;
         color: #4a4a4a;
         font-weight: bold;
-
+        display:flex;
     .question-num {
         font-size: 12px;
         color: #9b9b9b;
         float: right;
         font-weight: normal;
     }
-
+    .tags-choice{
+            padding-left:15px;
+            padding-right:15px;
+            height:48px;
+            flex:1;
+            .tags-choice-item{
+                display:inline-block;
+                width:17%;
+                height:26px;
+                line-height:26px;
+                border-radius: 3px;
+                text-align:center;
+                font-size: 12px;
+                color: #4A4A4A;
+                margin-right:6px;
+                background: #82CEF2;
+                color:#fff;
+            }
+            .active{
+                background: #82CEF2;
+                border:none;
+                height:26px;
+                line-height:26px;
+                font-size: 12px;
+                color: #FFFFFF;
+            }
+        }
     }
     .question-info {
         font-size: 16px;

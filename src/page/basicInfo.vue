@@ -3,7 +3,7 @@
         <p class="default-font">补充基本信息，即可向医生发起提问</p>
         <div class="basic-wrap">
             <div class="input-wrap">
-                <p class="input-label">姓名ss</p>
+                <p class="input-label">姓名</p>
                 <input type="text" class="from-control" v-model="realname" placeholder="填写姓名"/>
             </div>
             <div class="input-wrap">

@@ -1,39 +1,61 @@
 <template>
     <div class="main">
-        <ul class="nav_list">
-            <li class="nav_content" @click="jump(nav.path)" v-for="(nav,index) in navData" :key="index">
-                <i :class="['icon', nav.icon]"></i>
-                <span class="nav_name">{{nav.name}}</span>
-            </li>
-        </ul>
-        <div class="answer_list">
-            <dl class="answer_content" v-for="(list, index) in questionList" :key = "index" @click="jump('/interact',list.id)">
-                <dt class="answer_title">{{list.title}}</dt>
-                <dd class="answer_info">
-                    {{list.body}}
-                </dd>
-                <dd class="answer_data">
-                    <span class="answer_number">{{list.like}}</span>
-                    <i class="icon icon_best"></i>
-                    <span class="answer_number">{{list.click}}</span>
-                    <i class="icon icon_read"></i>
-                </dd>
-            </dl>
+        <div class="nav_search">
+            <div class="search-item">
+                <span class='search-item-img'><img style="width:12px;" :src="searchImg" alt=""></span>
+                <input type="text" placeholder="搜索" class="search-input" style="width:90%" v-model="condition" @keyup.enter="searchClick"/>
+                <span class='search-item-delte' style="margin-right:12px;height:100%;display: flex;align-items: center;" @click="Clearclick"><img :src="deleteImg" style="width:16px;"  alt=""></span>
+            </div>
+            <span class="search-word" @click="searchClick">搜索</span>
         </div>
+        <div v-if="Contenthide">
+            <ul class="nav_list" style="background-color:#ebebeb" v-if="searchhide">
+                <li class="nav_content" @click="jump(nav.path)" v-for="(nav,index) in navData" :key="index">
+                    <i :class="['icon', nav.icon]"></i>
+                    <span class="nav_name">{{nav.name}}</span>
+                </li>
+            </ul>
+            <div class="consult-list" v-if="searchhide"><span style="display:inline-block;margin-right:5px;background: #09BB07;width:4px;height:14px;"></span>咨询列表</div>
+            <div class="answer_list">
+                <dl class="answer_content" v-for="(list, index) in questionList" :key = "index" @click="jump('/interact',list.id)">
+                    <!-- <dt class="answer_title">{{list.title}}</dt> -->
+                    <div class="tags-choice">
+                        <div class="tags-choice-item" v-for="(val, index) in list.tags" :key = "index">{{val}}</div>
+                    </div>
+                    <dd class="answer_info">
+                        {{list.body}}
+                    </dd>
+                    <dd class="answer_data">
+                        <span>{{list.created| dateFilter}}</span>
+                        <span class="answer_number">{{list.like}}</span>
+                        <i class="icon icon_best"></i>
+                        <span class="answer_number">{{list.click}}</span>
+                        <i class="icon icon_read"></i>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="no_search" v-if="!Contenthide">无此结果，请换个关键词试试</div>
     </div>
 </template>
 
 <script>
+    import dateFilter from '../../src/filters'
     import { request, urls } from '../request'
-
     export default {
         data() {
             return {
+                Contenthide:true,
+                searchhide:true,
+                searchImg:require('../../src/img/icon_sousuo@3x.png'),
+                deleteImg:require('../../src/img/Group 2@3x.png'),
                 wrapperHeight: 0,
+                condition:'',
                 loading: false,
                 page: 0,
                 hasNext: true,
                 questionList: [],
+                taglist:[],
                 userCoin: {},
                 coinRecord: [],
                 navData:[
@@ -90,6 +112,33 @@
                     })
                 }
 
+            },
+            Clearclick(){
+                this.condition=''
+                this.searchhide=true
+                const params = {
+                    condition:this.condition
+                };
+                request.get(urls.getQuestionList, { params }).then((res)=>{
+                    if (res.data.code === 0) {
+                       this.questionList = res.data.data;
+                       this.Contenthide=true
+                    }
+                })
+            },
+            searchClick(){
+                this.searchhide=false
+                const params = {
+                    condition:this.condition
+                };
+                request.get(urls.getQuestionList, { params }).then((res)=>{
+                    if (res.data.code === 0) {
+                       this.questionList = res.data.data;
+                       if(res.data.data.length===0){
+                           this.Contenthide=false
+                       }
+                    }
+                })
             }
         }
     }
@@ -172,7 +221,6 @@
                 padding: 10px 0;
             }
             .answer_data{
-                text-align: right;
                 color: #9b9b9b;
                 font-size: 12px;
                 overflow:hidden;
@@ -195,7 +243,67 @@
                     background-size: 12px auto;
                 }
             }
+            .tags-choice{
+                display:flex;
+                .tags-choice-item{
+                    background: #EDFBFF;
+                    border-radius: 4px;
+                    width:20%;
+                    height:24px;
+                    line-height:24px;
+                    text-align:center;
+                    font-size: 12px;
+                    color: #4A4A4A;
+                    margin-right:6px;
+                }
+            }
         }
 
+    }
+    .nav_search{
+        height:44px;
+        padding-left:15px;
+        display:flex;
+        justify-content: space-between;
+        align-items:center;
+        padding-right:15px;
+        background-color: #f5f5f5;
+        .search-item{
+            height:24px;
+            background-color:#fff;
+            border-radius: 100px;
+            flex:1;
+            padding-left:10px;
+            display: flex;
+            align-items: center;
+            .search-item-img{
+                display:inline-block;
+                margin-right:6px;
+            }
+        }
+        .search-word{
+            font-size: 16px;
+            color: #09BB07;
+            line-height: 16px;
+            display:block;
+            margin-left:15px;
+        }
+    }
+    .consult-list{
+        background: #F5F5F5;
+        height:32px;
+        width:100%;
+        display:flex;
+        align-items:center;
+        padding-left:15px;
+        font-size: 14px;
+        color: #4A4A4A;
+        line-height: 14px;
+    }
+    .no_search{
+        font-size: 16px;
+        color: #4A4A4A;
+        line-height: 16px;
+        padding-left:15px;
     }
 </style>

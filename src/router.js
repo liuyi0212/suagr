@@ -37,6 +37,11 @@ const router = new VueRouter({
             name: 'district',
             path: '/district',
             component: asyncComponent('district')  
+        },
+        {
+            name: 'consulthidtory',
+            path: '/consulthidtory',
+            component: asyncComponent('consulthidtory')  
         }
     ]
 })
