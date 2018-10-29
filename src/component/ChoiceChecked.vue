@@ -36,7 +36,6 @@ export default {
     props: ['active','type'],
     computed:{
         activeVal(){
-            console.log(this.active,'接受的变化')
             if(this.active!==0){
                  return true
             }else{

@@ -11,37 +11,58 @@ const router = new VueRouter({
         {
             name: 'index',
             path: '/',
-            component: asyncComponent('index')
+            component: asyncComponent('index'),
+            meta: {
+              keepAlive: false
+           }
         },
         {
             name: 'basicInfo',
             path: '/basic-info',
+            meta: {
+               keepAlive: true
+            },
             component: asyncComponent('basicInfo')
         },
         {
             name: 'answer',
             path: '/answer',
-            component: asyncComponent('answer')
+            component: asyncComponent('answer'),
+            meta: {
+               keepAlive: false
+            }
         },
         {
             name: 'guide',
             path: '/guide',
-            component: asyncComponent('guide')
+            component: asyncComponent('guide'),
+            meta: {
+               keepAlive: false
+            }
         },
         {
             name: 'interact',
             path: '/interact',
-            component: asyncComponent('interact')
+            component: asyncComponent('interact'),
+            meta: {
+               keepAlive: false
+            }
         },
         {
             name: 'district',
             path: '/district',
-            component: asyncComponent('district')  
+            component: asyncComponent('district'),
+            meta: {
+               keepAlive: false
+            }
         },
         {
             name: 'consulthidtory',
             path: '/consulthidtory',
-            component: asyncComponent('consulthidtory')  
+            component: asyncComponent('consulthidtory'),
+            meta: {
+               keepAlive: false
+            } 
         }
     ]
 })

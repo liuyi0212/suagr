@@ -71,6 +71,18 @@
                 this.colorchage='#9b9b9b'
             } 
         },
+        activated(){
+            if(this.$route.query.val){
+                this.country=this.$route.query.val
+                this.colorchage='#4a4a4a'
+            }else{
+                this.country='请选择'
+                this.colorchage='#9b9b9b'
+            } 
+        },
+        deactivated(){
+            console.log('deactivated')
+        },
         methods: {
             selectSex(value){
               this.gender = value;
@@ -80,6 +92,9 @@
                 this.popupVisible = true;
             },
             async saveMemberInfo() {
+                if(this.country==='请选择'){
+                    this.country=''
+                }
                 const { data } = await request.post(urls.MemberInfo, {
                     age: this.age,
                     gender: this.gender,
