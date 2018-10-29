@@ -166,6 +166,7 @@
         font-weight: normal;
     }
     .tags-choice{
+            display:flex;
             padding-left:15px;
             padding-right:15px;
             height:48px;

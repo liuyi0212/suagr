@@ -95,7 +95,7 @@
                     body: this.askinfo,
                     picture: this.imgList.join(','),
                     tag:this.tags,
-                    doctorsee:anonymous
+                    doctorsee:this.anonymous
                     // title: this.title
                 })
                 if (data.code === 0) {

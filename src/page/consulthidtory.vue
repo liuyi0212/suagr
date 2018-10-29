@@ -43,7 +43,7 @@ import { request, urls } from '../request'
         methods: {
             async loadMore() {
                  const params = {
-                    creater:654321
+                    creater:'creater'
                 };
                 request.get(urls.getQuestionList, { params }).then((res)=>{
                     if (res.data.code === 0) {
