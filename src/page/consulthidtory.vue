@@ -54,15 +54,8 @@ import { request, urls } from '../request'
                     }
                 })    
             },
-            jump(path, id) {
-                if (path === 'answer') {
-                    window.open('http://daqiao.thedoc.cn:7766/wechat/redirect/oauth2/?url=/answer');
-                }
-                if (path === 'guide') {
-                     this.$router.push({ path });
-                }
-                else {
-                    const params = {
+            jump(path,id){
+                const params = {
                         id
                     };
                     request.get(urls.read, { params }).then(()=>{
@@ -73,8 +66,28 @@ import { request, urls } from '../request'
                             }
                         });
                     })
-                }
             }
+            // jump(path, id) {
+            //     if (path === 'answer') {
+            //         window.open('http://daqiao.thedoc.cn:7766/wechat/redirect/oauth2/?url=/answer');
+            //     }
+            //     if (path === 'guide') {
+            //          this.$router.push({ path });
+            //     }
+            //     else {
+                    // const params = {
+                    //     id
+                    // };
+                    // request.get(urls.read, { params }).then(()=>{
+                    //     this.$router.push({
+                    //         path,
+                    //         query: {
+                    //             id
+                    //         }
+                    //     });
+                    // })
+            //     }
+            // }
         }
 }
 </script>

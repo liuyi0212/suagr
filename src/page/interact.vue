@@ -174,8 +174,8 @@
             .tags-choice-item{
                 display:inline-block;
                 width:17%;
-                height:26px;
-                line-height:26px;
+                height:24px;
+                line-height:24px;
                 border-radius: 3px;
                 text-align:center;
                 font-size: 12px;
@@ -187,8 +187,8 @@
             .active{
                 background: #82CEF2;
                 border:none;
-                height:26px;
-                line-height:26px;
+                height:24px;
+                line-height:24px;
                 font-size: 12px;
                 color: #FFFFFF;
             }

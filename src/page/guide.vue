@@ -1,15 +1,18 @@
 <template>
     <div class="main">
-        <dl class="guide" v-for="list in questionList" @click="jump(list.url)">
+        <div>
+        <dl class="guide" v-for="(list,index) in questionList" @click="jump(list.url)" :key="index">
             <dt>
                 <img :src="list.thumb_url" alt="提问图片">
             </dt>
             <dd>{{list.title}}</dd>
         </dl>
+        </div>
     </div>
 </template>
 
 <script>
+    import  axios from 'axios'
     import { request, urls } from '../request'
 
     export default {
@@ -25,13 +28,26 @@
             this.getQuestionList();
         },
         methods: {
+            // async getQuestionList() {
+            //     const total=[]
+            //     const res = await request.get(urls.guide)
+            //     if (res.data.code === 0) {
+                     
+            //     }
+            // },
             async getQuestionList() {
-                const {
-                    data
-                } = await request.get(urls.guide)
-                if (data.code === 0) {
-                    this.questionList = data.data;
-                }
+                const total=[]
+                await  axios.get('http://daqiao.thedoc.cn/wechat/batchget/material/', {
+                }).then(res => {
+                    var cotent =res.data.data[0].item
+                    cotent.forEach(item=>{
+                        const bar =item.content.news_item
+                        bar.forEach(val=>{
+                            total.push(val)
+                        })  
+                    })
+                });
+                this.questionList=total
             },
             jump(path) {
                 window.location.href = path;

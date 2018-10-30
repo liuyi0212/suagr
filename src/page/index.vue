@@ -35,7 +35,7 @@
                 </dl>
             </div>
         </div>
-        <div class="no_search" v-if="!Contenthide">无此结果，请换个关键词试试</div>
+        <div class="no_search" v-if="!Contenthide">无此结果，请换个关键词试试。</div>
     </div>
 </template>
 
@@ -98,7 +98,7 @@
                 if (path === 'guide') {
                      this.$router.push({ path });
                 }
-                else {
+                else if(path === '/interact'){
                     const params = {
                         id
                     };
