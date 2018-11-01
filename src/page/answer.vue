@@ -314,7 +314,7 @@
         }
     }
     .consult-history{
-        margin-top:20px;
+        margin-top:15px;
         text-align:center;
         font-size: 12px;
         color: #4A4A4A;
