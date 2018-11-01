@@ -148,39 +148,41 @@
         background: #fff;
         overflow: hidden;
         margin-bottom: 8px;
-
     .question-title {
         border-bottom: 0.5px solid #f5f5f5;
         border-bottom: thin solid #f5f5f5;
-        padding: 16px 15px;
+        padding: 0px 15px;
         font-size: 16px;
         line-height: 24px;
         min-height: 24px;
         color: #4a4a4a;
         font-weight: bold;
         display:flex;
+        height:55px;
     .question-num {
         font-size: 12px;
         color: #9b9b9b;
         float: right;
         font-weight: normal;
+        display:flex;
+        align-items:center;
     }
     .tags-choice{
             display:flex;
-            padding-left:15px;
+            align-items:center;
             padding-right:15px;
-            height:48px;
+            height:55px;
             flex:1;
             .tags-choice-item{
                 display:inline-block;
-                width:17%;
+                padding: 0 4px;
                 height:24px;
                 line-height:24px;
                 border-radius: 3px;
                 text-align:center;
                 font-size: 12px;
                 color: #4A4A4A;
-                margin-right:6px;
+                margin-right:5px;
                 background: #82CEF2;
                 color:#fff;
             }

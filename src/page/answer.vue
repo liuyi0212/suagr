@@ -132,7 +132,6 @@
                 }
             },
             ConsultClick(){
-                console.log('跳转叶奶奶')
                  this.$router.push(
                      { path: '/consulthidtory' }
                 );
