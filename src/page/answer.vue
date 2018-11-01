@@ -11,7 +11,6 @@
             </ul>
             <textarea v-model="askinfo"
                       class="answerinfo"
-                      maxlength="50"
                       placeholder="请在此留下您的问题，医生会为您解答">
             </textarea>
             <!-- <p class="info-number">{{askinfo.length}}/50</p> -->
@@ -124,7 +123,10 @@
                 }
             },
             ConsultClick(){
-                 this.$router.push({ path: '/consulthidtory' });
+                console.log('跳转叶奶奶')
+                 this.$router.push(
+                     { path: '/consulthidtory' }
+                );
             },
             tagClick(index){
                   this.tagslist.forEach((val,key)=>{
