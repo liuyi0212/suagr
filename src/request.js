@@ -5,7 +5,7 @@ export const request = axios.create({
     // baseURL:'http://192.168.0.137:7766',
     // baseURL:'https://120.26.116.47:7766',
     // baseURL:'http://192.168.0.175:7766',
-    baseURL: 'http://localhost:5001:7766',
+    // baseURL: 'http://localhost:5001:7766',
     timeout: 30000
 })
 
