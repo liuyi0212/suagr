@@ -14,7 +14,7 @@
                       maxlength="50"
                       placeholder="请在此留下您的问题，医生会为您解答">
             </textarea>
-            <p class="info-number">{{askinfo.length}}/50</p>
+            <!-- <p class="info-number">{{askinfo.length}}/50</p> -->
         </div>
         <div class="add-photo">
             <ul>
@@ -33,10 +33,14 @@
                 <mt-switch v-model="anonymous"></mt-switch>
             </div>
         </div>
+         <div class="consult-history" @click="ConsultClick">
+             <span style="font-weight:bold;font-size: 16px;">咨询记录</span>
+             <span style="font-weight:normal;font-size:20px;color: #9b9b9b;">></span>
+        </div>
+
          <div class="commit-btn">
             <button @click="ask" class="commit-content">提交</button>
         </div>
-        <p class="consult-history" @click="ConsultClick">咨询记录</p>
     </div>
 </template>
 
@@ -175,7 +179,7 @@
             .font;
             box-sizing: border-box;
             width: 100%;
-            height: 132px;
+            height: 160px;
             resize: none;
             padding-top: 12px;
         }
@@ -222,7 +226,7 @@
         border-bottom: 0.5px solid #e5e5e5;
         border-bottom: thin solid #e5e5e5;
         overflow: hidden;
-        margin-bottom: 8px;
+        margin-bottom: 10px;
 
     ul {
         padding: 0 0 15px 15px;
@@ -258,7 +262,7 @@
     }
 
     .hide-name-wrap {
-        height: 65px;
+        height: 62px;
         background: #fff;
         padding: 0px 15px;
 
@@ -275,7 +279,7 @@
         font-weight: bold;
         font-size: 16px;
         line-height: 1;
-        margin-bottom: 11px;
+        margin-bottom: 8px;
     }
 
     }
@@ -314,11 +318,15 @@
         }
     }
     .consult-history{
-        margin-top:15px;
-        text-align:center;
+        height:44px;
+        background: #fff;
+        margin-top:10px;
         font-size: 12px;
-        color: #4A4A4A;
-        line-height: 12px;
+        line-height:44px;
+        padding-left:15px;
+        padding-right:15px;
+        display:flex;
+        justify-content: space-between;
     }
 </style>
 <style>
