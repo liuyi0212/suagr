@@ -7,7 +7,8 @@
         <div class="answerinfo-wrap">
             <!-- <input type="text" class="title"  placeholder="标题" v-model="title"/> -->
             <ul class="tags-choice">
-                <li  v-for="(val,index) in tagslist" :key="val.name" :class="{'tags-choice-item':true,'active':val.checked}" @click="tagClick(index)">{{val.name}}</li>
+                <li  v-for="(val,index) in tagslist" 
+                :key="val.name" :class="{'tags-choice-item':true,'active':val.checked,'nochoice':nochoice}" @click="tagClick(index)">{{val.name}}</li>
             </ul>
             <textarea v-model="askinfo"
                       class="answerinfo"
@@ -50,6 +51,7 @@
     export default {
         data() {
             return {
+                nochoice:false,
                 askinfo: '',
                 anonymous: false,
                 listtag:[],
@@ -86,8 +88,15 @@
         },
         methods: {
             async ask() {
+                
+                if (!this.tags) {
+                    Toast('请选择您的分类');
+                    this.nochoice=true
+                    return false;
+                }
                 if (!this.askinfo) {
                     Toast('提问内容不能为空');
+
                     return false;
                 }
                 // if (!this.title) {
@@ -145,8 +154,8 @@
                              this.$set(this.tagslist[index],'checked',true)
                              this.listtag.push(val.name)
                           }
+                          this.nochoice=false
                            this.tags=this.listtag.join()
-                           console.log(this.tags,'最后的')
                       }
                   })
             },
@@ -217,6 +226,9 @@
                 line-height:26px;
                 font-size: 12px;
                 color: #FFFFFF;
+            }
+            .nochoice{
+                border:1px solid red;
             }
         }
 
