@@ -80,9 +80,6 @@
                 this.colorchage='#9b9b9b'
             } 
         },
-        deactivated(){
-            console.log('deactivated')
-        },
         methods: {
             selectSex(value){
               this.gender = value;
@@ -94,6 +91,10 @@
             async saveMemberInfo() {
                 if(this.country==='请选择'){
                     this.country=''
+                }
+                if(!this.age||!this.gender||!this.realname||!this.country){
+                    Toast('请完善您的信息!');
+                    return false
                 }
                 const { data } = await request.post(urls.MemberInfo, {
                     age: this.age,

@@ -116,7 +116,6 @@
                 })
                 if (data.code === 0) {
                     this.isPraise = true;
-                    console.log(this.isPraise);
                 }
             }
         }
