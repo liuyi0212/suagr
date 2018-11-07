@@ -65,7 +65,7 @@
                         icon: 'icon_message',
                     },
                     {
-                        name:'糖尿病指导',
+                        name:'健康资讯',
                         path:'guide',
                         icon: 'icon_guide',
                     }
@@ -152,7 +152,7 @@
         display:flex;
         padding:16px 0 16px 15px;
         .nav_content{
-            font-size: 15px;
+            font-size: 20px;
             cursor: pointer;
             flex:1;
             margin-right: 15px;
@@ -207,9 +207,8 @@
         overflow: hidden;
         .answer_content{
             background: #fff;
-            padding: 15px;
-            border-bottom:0.5px solid #c9c9c0;
-            border-bottom:thin solid #c9c9c0;
+            padding: 10px 15px;
+            border-bottom:0.5px solid #f5f5f5;
             .answer_title{
                 color: #4a4a4a;
                 font-weight: bold;
@@ -218,7 +217,8 @@
                 color: #9b9b9b;
                 font-size: 14px;
                 line-height: 18px;
-                padding: 10px 0;
+                padding: 12px 0;
+                color: #4A4A4A;
             }
             .answer_data{
                 color: #9b9b9b;
@@ -261,7 +261,7 @@
 
     }
     .nav_search{
-        height:44px;
+        height:48px;
         padding-left:15px;
         display:flex;
         justify-content: space-between;
@@ -269,7 +269,7 @@
         padding-right:15px;
         background-color: #f5f5f5;
         .search-item{
-            height:24px;
+            height:28px;
             background-color:#fff;
             border-radius: 100px;
             flex:1;

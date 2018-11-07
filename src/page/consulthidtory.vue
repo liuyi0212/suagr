@@ -97,8 +97,7 @@ import { request, urls } from '../request'
         .answer_content{
             background: #fff;
             padding: 15px;
-            border-bottom:0.5px solid #c9c9c0;
-            border-bottom:thin solid #c9c9c0;
+            border-bottom:0.5px solid #F5F5F5;;
             .tags-choice{
                 display:flex;
                 .tags-choice-item{
