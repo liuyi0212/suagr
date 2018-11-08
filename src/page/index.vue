@@ -27,7 +27,7 @@
                     </dd>
                     <dd class="answer_data">
                         <span>{{list.created| dateFilter}}</span>
-                        <span v-if="list.replycontent" style="display:inline-block;padding:3px 3px;text-align:center;line-height:16px;background: #09BB07;border-radius: 2px;color:#fff;margin-left:3px;font-size: 10px;">{{list.replycontent|replayFilter}}</span>
+                        <span v-if="list.replycontent" style="display:inline-block;padding: 3px 3px 0 3px;text-align:center;line-height:16px;background: #09BB07;border-radius: 2px;color:#fff;margin-left:3px;font-size: 10px;">{{list.replycontent|replayFilter}}</span>
                         <span class="answer_number">{{list.like}}</span>
                         <i class="icon icon_best"></i>
                         <span class="answer_number">{{list.click}}</span>
@@ -302,7 +302,6 @@
     .consult-list{
         background: #F5F5F5;
         height:32px;
-        width:100%;
         display:flex;
         align-items:center;
         padding-left:15px;
