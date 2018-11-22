@@ -106,7 +106,7 @@
                     window.open('http://daqiao.thedoc.cn:7766/wechat/redirect/oauth2/?url=/answer');
                 }
                 if (path === 'guide') {
-                     this.$router.push({ path });
+                     window.open('https://mp.weixin.qq.com/mp/homepage?__biz=MzU3MzU4NDU2MA==&hid=1&sn=3854107acca128a1ddcdf61fcb0a007d');
                 }
                 else if(path === '/interact'){
                     const params = {
